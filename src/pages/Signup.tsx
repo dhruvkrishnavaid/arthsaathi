@@ -1,14 +1,14 @@
 import {
-  IconBrandAppleFilled,
-  IconBrandFacebookFilled,
-  IconBrandGoogleFilled,
+    IconBrandAppleFilled,
+    IconBrandFacebookFilled,
+    IconBrandGoogleFilled,
 } from "@tabler/icons-react";
 import { Link } from "react-router";
 
 const Signup = () => {
   return (
     <div className="flex flex-col h-screen p-6">
-      <div className="text-2xl w-full font-pacifico">Arthsaarthi</div>
+      <div className="text-2xl w-full font-pacifico">Arthsaathi</div>
       <div className="w-full h-full flex flex-col items-center justify-center gap-4">
         <div className="text-4xl font-bold">SIGN UP</div>
         <div>Lorem, ipsum dolor sit amet consectetur adipisicing elit.</div>

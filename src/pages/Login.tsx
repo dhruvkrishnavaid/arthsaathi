@@ -8,7 +8,7 @@ import { Link } from "react-router";
 const Login = () => {
   return (
     <div className="flex flex-col h-screen p-6">
-      <div className="text-2xl w-full font-pacifico">Arthsaarthi</div>
+      <div className="text-2xl w-full font-pacifico">Arthsaathi</div>
       <div className="w-full h-full flex flex-col items-center justify-center gap-4">
         <div className="text-4xl font-bold">LOGIN</div>
         <div>Lorem, ipsum dolor sit amet consectetur adipisicing elit.</div>

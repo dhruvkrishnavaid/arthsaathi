@@ -1,19 +1,19 @@
 import {
-  IconArchive,
-  IconChartBar,
-  IconChartPie2,
-  IconChevronDown,
-  IconChevronUp,
-  IconDots,
-  IconFile,
-  IconHelp,
-  IconHome,
-  IconSearch,
-  IconSettings,
-  IconStack2,
-  IconStar,
-  IconTrendingUp,
-  IconUser,
+    IconArchive,
+    IconChartBar,
+    IconChartPie2,
+    IconChevronDown,
+    IconChevronUp,
+    IconDots,
+    IconFile,
+    IconHelp,
+    IconHome,
+    IconSearch,
+    IconSettings,
+    IconStack2,
+    IconStar,
+    IconTrendingUp,
+    IconUser,
 } from "@tabler/icons-react";
 import { useState } from "react";
 import { Link } from "react-router";
@@ -22,7 +22,7 @@ const Sidebar = () => {
   const [isOpen, setIsOpen] = useState(false);
   return (
     <nav className="fixed flex flex-col h-screen p-6 border-r w-80 gap-4">
-      <div className="text-2xl font-pacifico">Arthsaarthi</div>
+      <div className="text-2xl font-pacifico">Arthsaathi</div>
       <form className="flex px-2 py-3 border gap-4">
         <button type="submit" className="cursor-pointer">
           <IconSearch />
