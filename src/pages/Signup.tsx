@@ -29,28 +29,28 @@ const Signup = () => {
           />
           <button
             type="submit"
-            className="bg-gray-900 py-3 transition-colors duration-300 hover:bg-gray-50 border text-gray-50 cursor-pointer hover:text-gray-900 text-center"
+            className="bg-neutral-900 py-3 transition-colors duration-300 hover:bg-neutral-50 border text-neutral-50 cursor-pointer hover:text-neutral-900 text-center"
           >
             Sign up
           </button>
           <hr />
           <button
             type="button"
-            className="hover:bg-gray-900 hover:text-gray-50 transition-colors duration-300 border py-3 cursor-pointer items-center justify-center flex gap-2"
+            className="hover:bg-neutral-900 hover:text-neutral-50 transition-colors duration-300 border py-3 cursor-pointer items-center justify-center flex gap-2"
           >
             <IconBrandGoogleFilled />
             <div>Continue with Google</div>
           </button>
           <button
             type="button"
-            className="hover:bg-gray-900 hover:text-gray-50 transition-colors duration-300 border py-3 cursor-pointer items-center justify-center flex gap-2"
+            className="hover:bg-neutral-900 hover:text-neutral-50 transition-colors duration-300 border py-3 cursor-pointer items-center justify-center flex gap-2"
           >
             <IconBrandFacebookFilled />
             <div>Continue with Facebook</div>
           </button>
           <button
             type="button"
-            className="hover:bg-gray-900 hover:text-gray-50 transition-colors duration-300 border py-3 cursor-pointer items-center justify-center flex gap-2"
+            className="hover:bg-neutral-900 hover:text-neutral-50 transition-colors duration-300 border py-3 cursor-pointer items-center justify-center flex gap-2"
           >
             <IconBrandAppleFilled />
             <div>Continue with Apple</div>

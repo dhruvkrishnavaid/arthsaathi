@@ -39,7 +39,7 @@ const Sidebar = () => {
         <li className="w-full h-12">
           <Link
             to="/"
-            className="flex items-center w-full h-full p-2 text-left cursor-pointer gap-4 hover:bg-neutral-200"
+            className="flex items-center transition-colors duration-300 w-full h-full p-2 text-left cursor-pointer gap-4 hover:bg-neutral-200"
           >
             <IconHome />
             <div>Home</div>
@@ -48,7 +48,7 @@ const Sidebar = () => {
         <li className="w-full h-12">
           <Link
             to="/about"
-            className="flex items-center w-full h-full p-2 text-left cursor-pointer gap-4 hover:bg-neutral-200"
+            className="flex items-center transition-colors duration-300 w-full h-full p-2 text-left cursor-pointer gap-4 hover:bg-neutral-200"
           >
             <IconStar />
             <div>Saved</div>
@@ -58,7 +58,7 @@ const Sidebar = () => {
         <li className="w-full h-12">
           <button
             onClick={() => setIsOpen(!isOpen)}
-            className="flex items-center w-full h-full p-2 text-left cursor-pointer gap-4 hover:bg-neutral-200"
+            className="flex items-center transition-colors duration-300 w-full h-full p-2 text-left cursor-pointer gap-4 hover:bg-neutral-200"
           >
             <IconChartPie2 />
             <div>Dashboard</div>
@@ -72,7 +72,7 @@ const Sidebar = () => {
             <li className="w-full h-12">
               <Link
                 to="/dashboard"
-                className="flex items-center w-full h-full p-2 text-left cursor-pointer gap-4 pl-9 hover:bg-neutral-200"
+                className="flex items-center transition-colors duration-300 w-full h-full p-2 text-left cursor-pointer gap-4 pl-9 hover:bg-neutral-200"
               >
                 <IconTrendingUp />
                 <div>Trends</div>
@@ -81,7 +81,7 @@ const Sidebar = () => {
             <li className="w-full h-12">
               <Link
                 to="/dashboard"
-                className="flex items-center w-full h-full p-2 text-left cursor-pointer gap-4 pl-9 hover:bg-neutral-200"
+                className="flex items-center transition-colors duration-300 w-full h-full p-2 text-left cursor-pointer gap-4 pl-9 hover:bg-neutral-200"
               >
                 <IconChartBar />
                 <div>Analytics</div>
@@ -90,7 +90,7 @@ const Sidebar = () => {
             <li className="w-full h-12">
               <Link
                 to="/dashboard"
-                className="flex items-center w-full h-full p-2 text-left cursor-pointer gap-4 pl-9 hover:bg-neutral-200"
+                className="flex items-center transition-colors duration-300 w-full h-full p-2 text-left cursor-pointer gap-4 pl-9 hover:bg-neutral-200"
               >
                 <IconArchive />
                 <div>Historical</div>
@@ -101,7 +101,7 @@ const Sidebar = () => {
         <li className="w-full h-12">
           <Link
             to="/about"
-            className="flex items-center w-full h-full p-2 text-left cursor-pointer gap-4 hover:bg-neutral-200"
+            className="flex items-center transition-colors duration-300 w-full h-full p-2 text-left cursor-pointer gap-4 hover:bg-neutral-200"
           >
             <IconStack2 />
             <div>Projects</div>
@@ -110,19 +110,20 @@ const Sidebar = () => {
         <li className="w-full h-12">
           <Link
             to="/about"
-            className="flex items-center w-full h-full p-2 text-left cursor-pointer gap-4 hover:bg-neutral-200"
+            className="flex items-center transition-colors duration-300 w-full h-full p-2 text-left cursor-pointer gap-4 hover:bg-neutral-200"
           >
             <IconFile />
             <div>Documents</div>
           </Link>
         </li>
       </ul>
-      <div className="mt-auto h-min">
-        <ul className="py-4 border-t">
+      <div className="mt-auto gap-4 flex flex-col h-min">
+        <hr />
+        <ul>
           <li className="w-full h-12">
             <Link
               to="/about"
-              className="flex items-center w-full h-full p-2 text-left cursor-pointer gap-4 hover:bg-neutral-200"
+              className="flex items-center transition-colors duration-300 w-full h-full p-2 text-left cursor-pointer gap-4 hover:bg-neutral-200"
             >
               <IconHelp />
               <div>Support</div>
@@ -131,14 +132,15 @@ const Sidebar = () => {
           <li className="w-full h-12">
             <Link
               to="/about"
-              className="flex items-center w-full h-full p-2 text-left cursor-pointer gap-4 hover:bg-neutral-200"
+              className="flex items-center transition-colors duration-300 w-full h-full p-2 text-left cursor-pointer gap-4 hover:bg-neutral-200"
             >
               <IconSettings />
               <div>Settings</div>
             </Link>
           </li>
         </ul>
-        <div className="py-4 border-t">
+        <hr />
+        <div>
           <button className="flex items-center w-full h-16 p-2 text-left gap-4">
             <IconUser className="w-12 h-12 p-2 border rounded-full" />
             <div>

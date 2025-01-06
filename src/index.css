@@ -3,8 +3,8 @@
 @import "tailwindcss";
 
 @layer base {
-  @apply bg-slate-50;
-  @apply text-gray-900;
+  @apply bg-neutral-50;
+  @apply text-neutral-900;
 }
 
 .font-pacifico {
@@ -18,5 +18,5 @@
   font-synthesis: none;
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+  -moz-osx-font-smoothing: neutralscale;
 }
