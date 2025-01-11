@@ -65,7 +65,7 @@ const Sidebar = () => {
           <ul>
             <li className="w-full h-12">
               <Link
-                to="/dashboard"
+                to="/meetings"
                 className="flex items-center w-full h-full p-2 text-left cursor-pointer transition-colors duration-300 gap-4 pl-9 hover:bg-neutral-200"
               >
                 <IconUsersGroup />

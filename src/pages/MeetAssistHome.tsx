@@ -23,12 +23,12 @@ const MeetAssistHome = () => {
           </span>
         </div>
         <div className="flex items-center gap-4">
-          <button className="px-6 py-4 bg-white border cursor-pointer text-center h-min w-min transition-colors duration-300 hover:bg-neutral-900 hover:text-white text-neutral-900">
+          <button className="px-6 py-4 text-center bg-white border cursor-pointer border-neutral-900 h-min w-min transition-colors duration-300 hover:bg-neutral-900 hover:text-white text-neutral-900">
             Delete Meeting
           </button>
           <Link
             to="/meetings/create"
-            className="px-6 py-4 text-white border cursor-pointer text-center h-min w-min transition-colors duration-300 bg-neutral-900 hover:bg-white hover:text-neutral-900"
+            className="px-6 py-4 text-center text-white border cursor-pointer border-neutral-900 h-min w-min transition-colors duration-300 bg-neutral-900 hover:bg-white hover:text-neutral-900"
           >
             Create Meeting
           </Link>
