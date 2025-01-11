@@ -5,6 +5,8 @@ import MeetAssistHome from "./pages/MeetAssistHome";
 import Profile from "./pages/Profile";
 import Signup from "./pages/Signup";
 import CreateMeet from "./pages/CreateMeet";
+import Learnings from "./pages/Learnings";
+import Home from "./pages/Home";
 
 const mainRouter = createBrowserRouter([
   {
@@ -35,6 +37,14 @@ const mainRouter = createBrowserRouter([
     path: "login",
     element: <Login />,
   },
+  {
+    path: "Home",
+    element: <App page={<Home />} />
+  },
+  {
+    path: "Learnings",
+    element: <App page={<Learnings />} />
+  }
 ]);
 
 export default mainRouter;
