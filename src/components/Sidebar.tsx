@@ -170,7 +170,7 @@ const Sidebar = () => {
             <div>
               <div>
                 {user?.name && user?.name?.length > 18
-                  ? user?.name?.slice(0, 18)
+                  ? user?.name?.slice(0, 18)+"..."
                   : user?.name}
               </div>
               <div className="text-neutral-500/90">
