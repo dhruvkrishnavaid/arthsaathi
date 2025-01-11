@@ -3,8 +3,9 @@
 @import "tailwindcss";
 
 @layer base {
-  @apply bg-neutral-50;
-  @apply text-neutral-900;
+  body {
+    @apply text-neutral-900;
+  }
 }
 
 .font-pacifico {

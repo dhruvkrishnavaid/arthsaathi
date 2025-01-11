@@ -8,7 +8,7 @@ const OTP = (params: {
   onVerify: () => void;
 }) => {
   return (
-    <div className="absolute flex h-screen items-center justify-center bg-neutral-300/40 w-screen flex-col gap-10 z-20 backdrop-blur-lg">
+    <div className="absolute z-20 flex flex-col items-center justify-center w-screen h-screen bg-neutral-300/40 gap-10 backdrop-blur-lg">
       <button
         onClick={params.onCancel}
         className="absolute top-0 left-0 px-6 py-4"
@@ -19,7 +19,7 @@ const OTP = (params: {
         value={params.otp}
         onChange={(inputValue) => params.setOtp(inputValue)}
         numInputs={6}
-        className="flex gap-4 px-2"
+        className="flex px-2 gap-4"
         inputStyle={{
           padding: "1rem",
           width: "3rem",
@@ -33,7 +33,7 @@ const OTP = (params: {
       />
       <button
         onClick={params.onVerify}
-        className="bg-neutral-900 py-3 transition-colors duration-300 hover:bg-neutral-50 border border-neutral-900 text-neutral-50 cursor-pointer hover:text-neutral-900 text-center w-min px-6"
+        className="px-6 py-3 text-center text-white border cursor-pointer bg-neutral-900 transition-colors duration-300 hover:bg-white border-neutral-900 hover:text-neutral-900 w-min"
       >
         Verify
       </button>

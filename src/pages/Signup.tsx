@@ -4,20 +4,25 @@ import {
   IconBrandGoogleFilled,
 } from "@tabler/icons-react";
 import axios from "axios";
-import { useState } from "react";
-import { Link } from "react-router";
+import { useEffect, useState } from "react";
+import { Link, useNavigate } from "react-router";
 import OTP from "../components/OTP";
-import { getFullUser, getUser, setUser } from "../utils/user";
-import Redirect from "./Redirect";
+import { useUserStore } from "../utils/user";
 
 const Signup = () => {
   const [signupClicked, setSignupClicked] = useState(false);
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [otp, setOtp] = useState("");
+  const navigate = useNavigate();
 
-  const user = getUser();
-  if (user) return <Redirect url="/" />;
+  const store = useUserStore();
+  const user = store.user;
+  useEffect(() => {
+    if (user) {
+      navigate("/");
+    }
+  }, [user, navigate]);
 
   const handleOTPChange = (inputValue: string) => {
     setOtp(inputValue);
@@ -51,8 +56,8 @@ const Signup = () => {
     });
     if (res.status === 200) {
       console.log("OTP Verified");
-      const fullUser = await getFullUser({ email: email, password: password });
-      setUser(fullUser);
+      await store.getFullUser({ email: email, password: password });
+      navigate(0);
     } else {
       console.log("OTP Verification failed");
     }
@@ -61,13 +66,13 @@ const Signup = () => {
   return (
     <div className="flex flex-col h-screen">
       <div className="p-6">
-        <div className="text-2xl w-full font-pacifico">Arthsaathi</div>
-        <div className="w-full h-full flex flex-col items-center justify-center gap-4">
+        <div className="w-full text-2xl font-pacifico">Arthsaathi</div>
+        <div className="flex flex-col items-center justify-center w-full h-full gap-4">
           <div className="text-4xl font-bold">SIGN UP</div>
           <div>Lorem, ipsum dolor sit amet consectetur adipisicing elit.</div>
           <form
             onSubmit={handleClick}
-            className="flex w-full max-w-md flex-col gap-4"
+            className="flex flex-col w-full max-w-md gap-4"
           >
             <input
               type="email"
@@ -76,7 +81,7 @@ const Signup = () => {
               onChange={(e) => setEmail(e.target.value)}
               id="email"
               placeholder="Email"
-              className="w-full outline-0 px-2 py-3 border"
+              className="w-full px-2 py-3 border outline-0"
             />
             <input
               type="password"
@@ -85,32 +90,32 @@ const Signup = () => {
               onChange={(e) => setPassword(e.target.value)}
               id="password"
               placeholder="Password"
-              className="w-full outline-0 px-2 py-3 border"
+              className="w-full px-2 py-3 border outline-0"
             />
             <button
               type="submit"
-              className="bg-neutral-900 py-3 transition-colors duration-300 hover:bg-neutral-50 border text-neutral-50 cursor-pointer hover:text-neutral-900 text-center"
+              className="py-3 text-center text-white border cursor-pointer bg-neutral-900 transition-colors duration-300 hover:bg-white hover:text-neutral-900"
             >
               Sign up
             </button>
             <hr />
             <button
               type="button"
-              className="hover:bg-neutral-900 hover:text-neutral-50 transition-colors duration-300 border py-3 cursor-pointer items-center justify-center flex gap-2"
+              className="flex items-center justify-center py-3 border cursor-pointer hover:bg-neutral-900 hover:text-white transition-colors duration-300 gap-2"
             >
               <IconBrandGoogleFilled />
               <div>Continue with Google</div>
             </button>
             <button
               type="button"
-              className="hover:bg-neutral-900 hover:text-neutral-50 transition-colors duration-300 border py-3 cursor-pointer items-center justify-center flex gap-2"
+              className="flex items-center justify-center py-3 border cursor-pointer hover:bg-neutral-900 hover:text-white transition-colors duration-300 gap-2"
             >
               <IconBrandFacebookFilled />
               <div>Continue with Facebook</div>
             </button>
             <button
               type="button"
-              className="hover:bg-neutral-900 hover:text-neutral-50 transition-colors duration-300 border py-3 cursor-pointer items-center justify-center flex gap-2"
+              className="flex items-center justify-center py-3 border cursor-pointer hover:bg-neutral-900 hover:text-white transition-colors duration-300 gap-2"
             >
               <IconBrandAppleFilled />
               <div>Continue with Apple</div>

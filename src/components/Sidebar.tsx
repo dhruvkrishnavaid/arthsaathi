@@ -4,7 +4,6 @@ import {
   IconBuildingStore,
   IconChevronDown,
   IconChevronUp,
-  IconDots,
   IconHeadset,
   IconHome,
   IconMessageCircleUser,
@@ -19,13 +18,14 @@ import {
 } from "@tabler/icons-react";
 import { useState } from "react";
 import { Link } from "react-router";
-import { getUser } from "../utils/user";
+import { useUserStore } from "../utils/user";
 
 const Sidebar = () => {
   const [isOpen, setIsOpen] = useState(false);
-  const user = getUser();
+  const store = useUserStore();
+  const user = store.user;
   return (
-    <nav className="fixed flex flex-col h-screen p-6 border-r w-80 gap-4">
+    <nav className="fixed z-20 flex flex-col h-screen p-6 bg-white border-r w-80 gap-4">
       <div className="text-2xl font-pacifico">Arthsaathi</div>
       <form className="flex px-2 py-3 border gap-4">
         <button type="submit" className="cursor-pointer">
@@ -43,7 +43,7 @@ const Sidebar = () => {
         <li className="w-full h-12">
           <Link
             to="/"
-            className="flex items-center transition-colors duration-300 w-full h-full p-2 text-left cursor-pointer gap-4 hover:bg-neutral-200"
+            className="flex items-center w-full h-full p-2 text-left cursor-pointer transition-colors duration-300 gap-4 hover:bg-neutral-200"
           >
             <IconHome />
             <div>Home</div>
@@ -52,7 +52,7 @@ const Sidebar = () => {
         <li className="w-full h-12">
           <button
             onClick={() => setIsOpen(!isOpen)}
-            className="flex items-center transition-colors duration-300 w-full h-full p-2 text-left cursor-pointer gap-4 hover:bg-neutral-200"
+            className="flex items-center w-full h-full p-2 text-left cursor-pointer transition-colors duration-300 gap-4 hover:bg-neutral-200"
           >
             <IconTools />
             <div>Tools and Features</div>
@@ -66,7 +66,7 @@ const Sidebar = () => {
             <li className="w-full h-12">
               <Link
                 to="/dashboard"
-                className="flex items-center transition-colors duration-300 w-full h-full p-2 text-left cursor-pointer gap-4 pl-9 hover:bg-neutral-200"
+                className="flex items-center w-full h-full p-2 text-left cursor-pointer transition-colors duration-300 gap-4 pl-9 hover:bg-neutral-200"
               >
                 <IconUsersGroup />
                 <div>Meeting Assistant</div>
@@ -75,7 +75,7 @@ const Sidebar = () => {
             <li className="w-full h-12">
               <Link
                 to="/dashboard"
-                className="flex items-center transition-colors duration-300 w-full h-full p-2 text-left cursor-pointer gap-4 pl-9 hover:bg-neutral-200"
+                className="flex items-center w-full h-full p-2 text-left cursor-pointer transition-colors duration-300 gap-4 pl-9 hover:bg-neutral-200"
               >
                 <IconBooks />
                 <div>Learnings</div>
@@ -84,7 +84,7 @@ const Sidebar = () => {
             <li className="w-full h-12">
               <Link
                 to="/dashboard"
-                className="flex items-center transition-colors duration-300 w-full h-full p-2 text-left cursor-pointer gap-4 pl-9 hover:bg-neutral-200"
+                className="flex items-center w-full h-full p-2 text-left cursor-pointer transition-colors duration-300 gap-4 pl-9 hover:bg-neutral-200"
               >
                 <IconBuildingStore />
                 <div>Business Support Hub</div>
@@ -93,7 +93,7 @@ const Sidebar = () => {
             <li className="w-full h-12">
               <Link
                 to="/dashboard"
-                className="flex items-center transition-colors duration-300 w-full h-full p-2 text-left cursor-pointer gap-4 pl-9 hover:bg-neutral-200"
+                className="flex items-center w-full h-full p-2 text-left cursor-pointer transition-colors duration-300 gap-4 pl-9 hover:bg-neutral-200"
               >
                 <IconRobot />
                 <div>AI Assistant</div>
@@ -102,7 +102,7 @@ const Sidebar = () => {
             <li className="w-full h-12">
               <Link
                 to="/dashboard"
-                className="flex items-center transition-colors duration-300 w-full h-full p-2 text-left cursor-pointer gap-4 pl-9 hover:bg-neutral-200"
+                className="flex items-center w-full h-full p-2 text-left cursor-pointer transition-colors duration-300 gap-4 pl-9 hover:bg-neutral-200"
               >
                 <IconMessageCircleUser />
                 <div>Community Chats</div>
@@ -111,7 +111,7 @@ const Sidebar = () => {
             <li className="w-full h-12">
               <Link
                 to="/dashboard"
-                className="flex items-center transition-colors duration-300 w-full h-full p-2 text-left cursor-pointer gap-4 pl-9 hover:bg-neutral-200"
+                className="flex items-center w-full h-full p-2 text-left cursor-pointer transition-colors duration-300 gap-4 pl-9 hover:bg-neutral-200"
               >
                 <IconPigMoney />
                 <div>Bank Data</div>
@@ -122,7 +122,7 @@ const Sidebar = () => {
         <li className="w-full h-12">
           <Link
             to="/about"
-            className="flex items-center transition-colors duration-300 w-full h-full p-2 text-left cursor-pointer gap-4 hover:bg-neutral-200"
+            className="flex items-center w-full h-full p-2 text-left cursor-pointer transition-colors duration-300 gap-4 hover:bg-neutral-200"
           >
             <IconTrendingUp />
             <div>Timeline</div>
@@ -131,20 +131,20 @@ const Sidebar = () => {
         <li className="w-full h-12">
           <Link
             to="/about"
-            className="flex items-center transition-colors duration-300 w-full h-full p-2 text-left cursor-pointer gap-4 hover:bg-neutral-200"
+            className="flex items-center w-full h-full p-2 text-left cursor-pointer transition-colors duration-300 gap-4 hover:bg-neutral-200"
           >
             <IconBalloon />
             <div>New Opportunities</div>
           </Link>
         </li>
       </ul>
-      <div className="mt-auto gap-4 flex flex-col h-min">
+      <div className="flex flex-col mt-auto gap-4 h-min">
         <hr />
         <ul>
           <li className="w-full h-12">
             <Link
               to="/about"
-              className="flex items-center transition-colors duration-300 w-full h-full p-2 text-left cursor-pointer gap-4 hover:bg-neutral-200"
+              className="flex items-center w-full h-full p-2 text-left cursor-pointer transition-colors duration-300 gap-4 hover:bg-neutral-200"
             >
               <IconHeadset />
               <div>Support</div>
@@ -153,7 +153,7 @@ const Sidebar = () => {
           <li className="w-full h-12">
             <Link
               to="/about"
-              className="flex items-center transition-colors duration-300 w-full h-full p-2 text-left cursor-pointer gap-4 hover:bg-neutral-200"
+              className="flex items-center w-full h-full p-2 text-left cursor-pointer transition-colors duration-300 gap-4 hover:bg-neutral-200"
             >
               <IconSettings />
               <div>Settings</div>
@@ -162,14 +162,22 @@ const Sidebar = () => {
         </ul>
         <hr />
         <div>
-          <button className="flex items-center w-full h-16 p-2 text-left gap-4">
-            <IconUser className="w-12 h-12 p-2 border rounded-full" />
+          <Link
+            to="/profile"
+            className="flex items-center w-full h-16 p-2 text-left cursor-pointer gap-4 transition-colors duration-300 hover:bg-neutral-200"
+          >
+            <IconUser className="w-12 h-12 p-2 border rounded-full min-w-12 min-h-12" />
             <div>
-              <div>{user?.name}</div>
-              <div className="text-neutral-500/90">{user?.email}</div>
+              <div>
+                {user?.name && user?.name?.length > 18
+                  ? user?.name?.slice(0, 18)
+                  : user?.name}
+              </div>
+              <div className="text-neutral-500/90">
+                {user?.email.split("@")[0]}
+              </div>
             </div>
-            <IconDots className="ml-auto" />
-          </button>
+          </Link>
         </div>
       </div>
     </nav>
