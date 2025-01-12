@@ -1,7 +1,7 @@
 import { useState } from "react";
-import { Meeting } from "../utils/interfaces";
-import { postUrl } from "../utils/fetchUrl";
 import { useNavigate } from "react-router";
+import { postUrl } from "../utils/fetchUrl";
+import { Meeting } from "../utils/interfaces";
 import { useUserStore } from "../utils/user";
 
 const CreateMeet = () => {
@@ -50,7 +50,7 @@ const CreateMeet = () => {
     try {
       const res = await postUrl(meet, "/createMeeting");
       console.log(res);
-      navigate(`/meetings/${res.id}`);
+      navigate(`/meetings/${res._id}`);
     } catch (error: unknown) {
       if (error instanceof Error) {
         alert("Failed to create meeting!");

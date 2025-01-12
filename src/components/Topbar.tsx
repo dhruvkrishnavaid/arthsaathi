@@ -1,4 +1,9 @@
-import { IconBell, IconChevronDown, IconSearch, IconUser } from "@tabler/icons-react";
+import {
+  IconBell,
+  IconChevronDown,
+  IconSearch,
+  IconUser,
+} from "@tabler/icons-react";
 import { useUserStore } from "../utils/user";
 
 const Topbar = () => {

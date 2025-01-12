@@ -1,8 +1,9 @@
+import { IconArrowRight } from "@tabler/icons-react";
 import { useQuery } from "@tanstack/react-query";
+import { Link } from "react-router";
 import { postUrl } from "../utils/fetchUrl";
 import { Meeting } from "../utils/interfaces";
 import { useUserStore } from "../utils/user";
-import { Link } from "react-router";
 
 const MeetAssistHome = () => {
   const store = useUserStore();
@@ -67,9 +68,10 @@ const MeetAssistHome = () => {
                   <div className="flex">
                     <Link
                       to={`/meetings/${meeting._id}`}
-                      className="w-full px-6 py-4 bg-white border cursor-pointer h-min transition-colors duration-300 hover:bg-neutral-900 hover:text-white text-neutral-900"
+                      className="flex justify-between w-full px-6 py-4 bg-white border cursor-pointer h-min transition-colors duration-300 hover:bg-neutral-900 hover:text-white text-neutral-900"
                     >
-                      View Details
+                      <span>View Details</span>
+                      <IconArrowRight />
                     </Link>
                   </div>
                 </div>
@@ -112,9 +114,10 @@ const MeetAssistHome = () => {
                   <div className="flex">
                     <Link
                       to={`/meetings/${meeting._id}`}
-                      className="w-full px-6 py-4 bg-white border cursor-pointer h-min transition-colors duration-300 hover:bg-neutral-900 hover:text-white text-neutral-900"
+                      className="flex justify-between w-full px-6 py-4 bg-white border cursor-pointer h-min transition-colors duration-300 hover:bg-neutral-900 hover:text-white text-neutral-900"
                     >
-                      View Details
+                      <span>View Details</span>
+                      <IconArrowRight />
                     </Link>
                   </div>
                 </div>

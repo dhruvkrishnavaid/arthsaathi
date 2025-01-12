@@ -2,6 +2,7 @@ import { createBrowserRouter } from "react-router";
 import App from "./App";
 import CreateMeet from "./pages/CreateMeet";
 import Home from "./pages/Home";
+import LearningContent from "./pages/LearningContent";
 import Learnings from "./pages/Learnings";
 import Login from "./pages/Login";
 import MeetAssistHome from "./pages/MeetAssistHome";
@@ -16,7 +17,7 @@ const mainRouter = createBrowserRouter([
   },
   {
     path: "home",
-    element: <App page={<Home />} />
+    element: <App page={<Home />} />,
   },
   {
     path: "profile",
@@ -40,8 +41,11 @@ const mainRouter = createBrowserRouter([
   },
   {
     path: "learnings",
-    element: <App page={<Learnings />} />
-  }
+    children: [
+      { path: "", element: <App page={<Learnings />} /> },
+      { path: ":level", element: <App page={<LearningContent />} /> },
+    ],
+  },
 ]);
 
 export default mainRouter;
