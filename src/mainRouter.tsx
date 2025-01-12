@@ -1,16 +1,22 @@
 import { createBrowserRouter } from "react-router";
 import App from "./App";
+import CreateMeet from "./pages/CreateMeet";
+import Home from "./pages/Home";
+import Learnings from "./pages/Learnings";
 import Login from "./pages/Login";
 import MeetAssistHome from "./pages/MeetAssistHome";
+import MeetDetails from "./pages/MeetDetails";
 import Profile from "./pages/Profile";
 import Signup from "./pages/Signup";
-import CreateMeet from "./pages/CreateMeet";
-import MeetDetails from "./pages/MeetDetails";
 
 const mainRouter = createBrowserRouter([
   {
     path: "",
-    element: <App page={<MeetAssistHome />} />,
+    element: <App page={<Home />} />,
+  },
+  {
+    path: "home",
+    element: <App page={<Home />} />
   },
   {
     path: "profile",
@@ -25,10 +31,6 @@ const mainRouter = createBrowserRouter([
     ],
   },
   {
-    path: "new-meeting",
-    element: <App page={<MeetAssistHome />} />,
-  },
-  {
     path: "register",
     element: <Signup />,
   },
@@ -36,6 +38,10 @@ const mainRouter = createBrowserRouter([
     path: "login",
     element: <Login />,
   },
+  {
+    path: "learnings",
+    element: <App page={<Learnings />} />
+  }
 ]);
 
 export default mainRouter;

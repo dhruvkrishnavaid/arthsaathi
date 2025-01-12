@@ -42,7 +42,7 @@ const Sidebar = () => {
       <ul>
         <li className="w-full h-12">
           <Link
-            to="/"
+            to="/home"
             className="flex items-center w-full h-full p-2 text-left cursor-pointer transition-colors duration-300 gap-4 hover:bg-neutral-200"
           >
             <IconHome />
@@ -74,7 +74,7 @@ const Sidebar = () => {
             </li>
             <li className="w-full h-12">
               <Link
-                to="/dashboard"
+                to="/Learnings"
                 className="flex items-center w-full h-full p-2 text-left cursor-pointer transition-colors duration-300 gap-4 pl-9 hover:bg-neutral-200"
               >
                 <IconBooks />
