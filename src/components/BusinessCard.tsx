@@ -2,7 +2,7 @@ import { IconBookmark, IconMapPin } from "@tabler/icons-react";
 
 const BusinessCard = () => {
   return (
-    <div className="flex w-xl border">
+    <div className="flex border w-xl">
       <img
         src="https://random.imagecdn.app/250/250"
         alt="business_logo"

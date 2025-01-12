@@ -3,6 +3,7 @@ import App from "./App";
 import CreateMeet from "./pages/CreateMeet";
 import Home from "./pages/Home";
 import LearningContent from "./pages/LearningContent";
+import LearningResources from "./pages/LearningResources";
 import Learnings from "./pages/Learnings";
 import Login from "./pages/Login";
 import MeetAssistHome from "./pages/MeetAssistHome";
@@ -43,7 +44,8 @@ const mainRouter = createBrowserRouter([
     path: "learnings",
     children: [
       { path: "", element: <App page={<Learnings />} /> },
-      { path: ":level", element: <App page={<LearningContent />} /> },
+      { path: ":level", element: <App page={<LearningResources />} /> },
+      { path: ":level/:index", element: <App page={<LearningContent />} /> },
     ],
   },
 ]);

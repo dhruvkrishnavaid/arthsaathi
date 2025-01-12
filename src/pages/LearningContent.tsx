@@ -1,45 +1,47 @@
 import { useQuery } from "@tanstack/react-query";
 import { useParams } from "react-router";
-import Item from "../components/Item";
+import TextToSpeech from "../components/TTS";
 import { postUrl } from "../utils/fetchUrl";
 import { useUserStore } from "../utils/user";
 
 const LearningContent = () => {
-  const { level } = useParams();
+  const { level, index } = useParams();
   const store = useUserStore();
-  const user = store.user;
-  const { data, error, isLoading } = useQuery({
+  const { data, error, isLoading } = useQuery<
+    {
+      title: "string";
+      content: "string";
+    }[]
+  >({
     queryKey: ["learnings", level],
     queryFn: async () =>
       await postUrl(
         {
-          email: user?.email,
+          email: store.user?.email,
           level: level,
-          profession: user?.profession,
-          financialGoals: user?.financialGoals,
+          profession: store.user?.profession,
+          financialGoals: store.user?.financialGoals,
           language: "english",
         },
         "/generateTutorial",
       ),
   });
-  return (
-    <div className="flex flex-col gap-4">
-      <h1 className="text-4xl font-bold">{level?.toUpperCase()} COURSES</h1>
-      {isLoading && <div>Loading...</div>}
-      {error && <div>Error: {`${error}`}</div>}
-      {!isLoading && !error && data && (
-        <div className="flex flex-col gap-4">
-          {data.map(
-            (course: { title: "string"; content: "string" }, id: number) => (
-              <div key={id} className="flex flex-col gap-2">
-               <Item title={course.title}>{course.content}</Item>
-              </div>
-            ),
-          )}
-        </div>
-      )}
-    </div>
-  );
+  if (isLoading) return <div>Loading...</div>;
+  if (error) return <div>Error: {`${error}`}</div>;
+  if (data && (data.length ?? 0 > parseInt(index!))) {
+    return (
+      <div className="flex flex-col gap-4">
+        <h1 className="text-4xl font-bold">
+          {data[parseInt(index!)].title}
+        </h1>
+        <TextToSpeech className="flex flex-col gap-4">
+          {data[parseInt(index!)].content}
+          </TextToSpeech>
+      </div>
+    );
+  } else {
+    return <div>Content not found</div>;
+  }
 };
 
 export default LearningContent;
