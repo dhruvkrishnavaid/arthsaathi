@@ -48,9 +48,9 @@ const CreateMeet = () => {
 
   const handleSubmit = async () => {
     try {
-    const res = await postUrl(meet, "/createMeeting");
-    console.log(res);
-    navigate(`/meetings/${res.id}`);
+      const res = await postUrl(meet, "/createMeeting");
+      console.log(res);
+      navigate(`/meetings/${res.id}`);
     } catch (error: unknown) {
       if (error instanceof Error) {
         alert("Failed to create meeting!");
@@ -76,7 +76,7 @@ const CreateMeet = () => {
             name="participants"
             placeholder="p1@mail.com,p2@mail.com"
             value={meet.participants?.join(",")}
-            className="w-full outline-0 flex px-2 py-3 border"
+            className="flex w-full px-2 py-3 border outline-0"
             onChange={handleParticipantsChange}
           />
         </div>
@@ -87,7 +87,7 @@ const CreateMeet = () => {
             name="title"
             placeholder="Meeting Agenda"
             value={meet.description}
-            className="w-full outline-0 flex px-2 py-3 border"
+            className="flex w-full px-2 py-3 border outline-0"
             onChange={handleAgendaChange}
           />
         </div>
@@ -97,16 +97,22 @@ const CreateMeet = () => {
             name="content"
             placeholder="Meeting Description"
             value={meet.notes}
-            className="w-full outline-0 flex px-2 py-3 border"
+            className="flex w-full px-2 py-3 border outline-0"
             onInput={handleNotesChange}
           />
         </div>
         <div>
           <label>Date</label>
           <input
-            type="date"
-            value={new Date(meet.date!).toISOString().split("T")[0]}
-            className="w-full outline-0 flex px-2 py-3 border"
+            type="datetime-local"
+            value={
+              new Date(
+                meet.date!.getTime() - new Date().getTimezoneOffset() * 60000,
+              )
+                .toISOString()
+                .split(".")[0]
+            }
+            className="flex w-full px-2 py-3 border outline-0"
             onChange={(e) => handleDateChange(new Date(e.target.value))}
           />
         </div>

@@ -1,5 +1,6 @@
 import { useEffect } from "react";
 import { useNavigate } from "react-router";
+import "regenerator-runtime/runtime";
 import Sidebar from "./components/Sidebar";
 import Topbar from "./components/Topbar";
 import { useUserStore } from "./utils/user";

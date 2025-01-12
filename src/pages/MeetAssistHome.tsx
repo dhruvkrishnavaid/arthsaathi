@@ -11,11 +11,9 @@ const MeetAssistHome = () => {
     queryFn: async () =>
       await postUrl({ email: store.user?.email }, "/getMeetings"),
   });
-
-  console.log(data);
   return (
     <div className="flex flex-col w-full gap-4">
-      <div className="flex p-4 border border-neutral-900">
+      <div className="flex flex-col p-4 border lg:flex-row gap-4 border-neutral-900">
         <div className="flex flex-col gap-4">
           <h1 className="text-4xl font-bold">Meeting Assistant</h1>
           <span>
@@ -52,8 +50,11 @@ const MeetAssistHome = () => {
                   meeting.date && new Date(meeting.date) >= new Date(),
               )
               .map((meeting: Meeting) => (
-                <div className="p-4 border">
-                  <div className="pb-4 border-b min-w-xs">
+                <div
+                  key={meeting._id}
+                  className="flex flex-col justify-between p-4 border w-xs gap-4"
+                >
+                  <div>
                     <div className="text-2xl font-semibold">
                       {meeting.description}
                     </div>
@@ -62,8 +63,12 @@ const MeetAssistHome = () => {
                       {new Date(meeting.date!).toLocaleTimeString()}
                     </div>
                   </div>
-                  <div className="flex mt-4 gap-4">
-                    <Link to={`/meetings/${meeting._id}`} className="w-full px-6 py-4 bg-white border cursor-pointer h-min transition-colors duration-300 hover:bg-neutral-900 hover:text-white text-neutral-900">
+                  <hr className="mt-auto" />
+                  <div className="flex">
+                    <Link
+                      to={`/meetings/${meeting._id}`}
+                      className="w-full px-6 py-4 bg-white border cursor-pointer h-min transition-colors duration-300 hover:bg-neutral-900 hover:text-white text-neutral-900"
+                    >
                       View Details
                     </Link>
                   </div>
@@ -90,8 +95,11 @@ const MeetAssistHome = () => {
                   meeting.date && new Date(meeting.date) < new Date(),
               )
               .map((meeting: Meeting) => (
-                <div className="p-4 border">
-                  <div className="pb-4 border-b min-w-xs">
+                <div
+                  key={meeting._id}
+                  className="flex flex-col justify-between p-4 border w-xs gap-4"
+                >
+                  <div>
                     <div className="text-2xl font-semibold">
                       {meeting.description}
                     </div>
@@ -100,8 +108,12 @@ const MeetAssistHome = () => {
                       {new Date(meeting.date!).toLocaleTimeString()}
                     </div>
                   </div>
-                  <div className="flex mt-4 gap-4">
-                    <Link to={`/meetings/${meeting._id}`} className="w-full px-6 py-4 bg-white border cursor-pointer h-min transition-colors duration-300 hover:bg-neutral-900 hover:text-white text-neutral-900">
+                  <hr className="mt-auto" />
+                  <div className="flex">
+                    <Link
+                      to={`/meetings/${meeting._id}`}
+                      className="w-full px-6 py-4 bg-white border cursor-pointer h-min transition-colors duration-300 hover:bg-neutral-900 hover:text-white text-neutral-900"
+                    >
                       View Details
                     </Link>
                   </div>
