@@ -1,17 +1,22 @@
 import { createBrowserRouter } from "react-router";
 import App from "./App";
+import CreateMeet from "./pages/CreateMeet";
+import Home from "./pages/Home";
+import Learnings from "./pages/Learnings";
 import Login from "./pages/Login";
 import MeetAssistHome from "./pages/MeetAssistHome";
+import MeetDetails from "./pages/MeetDetails";
 import Profile from "./pages/Profile";
 import Signup from "./pages/Signup";
-import CreateMeet from "./pages/CreateMeet";
-import Learnings from "./pages/Learnings";
-import Home from "./pages/Home";
 
 const mainRouter = createBrowserRouter([
   {
     path: "",
-    element: <App page={<MeetAssistHome />} />,
+    element: <App page={<Home />} />,
+  },
+  {
+    path: "home",
+    element: <App page={<Home />} />
   },
   {
     path: "profile",
@@ -22,12 +27,8 @@ const mainRouter = createBrowserRouter([
     children: [
       { path: "", element: <App page={<MeetAssistHome />} /> },
       { path: "create", element: <App page={<CreateMeet />} /> },
-      { path: ":id", element: <App page={<MeetAssistHome />} /> },
+      { path: ":id", element: <App page={<MeetDetails />} /> },
     ],
-  },
-  {
-    path: "new-meeting",
-    element: <App page={<MeetAssistHome />} />,
   },
   {
     path: "register",
@@ -38,11 +39,7 @@ const mainRouter = createBrowserRouter([
     element: <Login />,
   },
   {
-    path: "Home",
-    element: <App page={<Home />} />
-  },
-  {
-    path: "Learnings",
+    path: "learnings",
     element: <App page={<Learnings />} />
   }
 ]);
