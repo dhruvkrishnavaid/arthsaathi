@@ -78,7 +78,7 @@ const MeetDetails = () => {
           {data.summary?.length ?? 0 > 0 ? (
             data.summary
           ) : (
-            <div className="flex flex-col bg-neutral-100 w-full h-full p-6 border gap-4">
+            <div className="flex flex-col w-full h-full p-6 border bg-neutral-100 gap-4">
               <h2 className="text-2xl font-semibold">No Summary Recorded</h2>
               <p>
                 The meeting was not recorded. Please check back later for
@@ -120,10 +120,10 @@ const MeetDetails = () => {
             <button
               onClick={
                 listening
-                  ? SpeechRecognition.stopListening
+                  ? () => SpeechRecognition.stopListening()
                   : () => SpeechRecognition.startListening({ continuous: true })
               }
-              className="p-6 rounded-full  text-white bg-neutral-900 border cursor-pointer hover:bg-white hover:text-neutral-900 transition-colors duration-300"
+              className="p-6 text-white border rounded-full cursor-pointer  bg-neutral-900 hover:bg-white hover:text-neutral-900 transition-colors duration-300"
             >
               {listening ? (
                 <IconMicrophoneFilled size={28} />
@@ -132,7 +132,7 @@ const MeetDetails = () => {
               )}
             </button>
           </div>
-          <div className="flex flex-col items-center justify-evenly w-full gap-4 min-w-min">
+          <div className="flex flex-col items-center w-full justify-evenly gap-4 min-w-min">
             <button
               onClick={() => {
                 SpeechRecognition.abortListening();
@@ -144,7 +144,7 @@ const MeetDetails = () => {
             </button>
             <button
               onClick={handleSubmit}
-              className="container py-4 text-white bg-neutral-900 border cursor-pointer hover:bg-white hover:text-neutral-900 transition-colors duration-300"
+              className="container py-4 text-white border cursor-pointer bg-neutral-900 hover:bg-white hover:text-neutral-900 transition-colors duration-300"
             >
               Save Recording
             </button>

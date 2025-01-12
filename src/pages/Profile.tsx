@@ -1,10 +1,10 @@
 import { useState } from "react";
 import { useNavigate } from "react-router";
-import { useUserStore } from "../utils/user";
 import { User } from "../utils/interfaces";
+import { useUserStore } from "../utils/user";
 
 const Profile = () => {
-  const store = useUserStore()
+  const store = useUserStore();
   const user = store.user;
   const [userState, setUserState] = useState<User | null>(user);
   const navigate = useNavigate();
