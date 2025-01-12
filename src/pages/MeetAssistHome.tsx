@@ -6,11 +6,13 @@ import { Link } from "react-router";
 
 const MeetAssistHome = () => {
   const store = useUserStore();
-  const { data, error, isLoading } = useQuery({
-    queryKey: ["user"],
-    queryFn: async () => postUrl(store.user, "/getMeetings"),
+  const { data, error, isLoading } = useQuery<Meeting[]>({
+    queryKey: ["meetings"],
+    queryFn: async () =>
+      await postUrl({ email: store.user?.email }, "/getMeetings"),
   });
 
+  console.log(data);
   return (
     <div className="flex flex-col w-full gap-4">
       <div className="flex p-4 border border-neutral-900">
@@ -38,12 +40,16 @@ const MeetAssistHome = () => {
         <h2 className="text-3xl font-bold">Upcoming Meetings</h2>
         <div className="overflow-x-auto grid grid-flow-col gap-4">
           {!isLoading &&
-            !error &&
-            data &&
+          !error &&
+          data &&
+          data.filter(
+            (meeting: Meeting) =>
+              meeting.date && new Date(meeting.date) >= new Date(),
+          ).length > 0 ? (
             data
               .filter(
                 (meeting: Meeting) =>
-                  meeting.date && new Date(meeting.date) > new Date(),
+                  meeting.date && new Date(meeting.date) >= new Date(),
               )
               .map((meeting: Meeting) => (
                 <div className="p-4 border">
@@ -52,25 +58,32 @@ const MeetAssistHome = () => {
                       {meeting.description}
                     </div>
                     <div>
-                      {meeting.date?.toLocaleDateString()} |{" "}
-                      {meeting.date?.toLocaleTimeString()}
+                      {new Date(meeting.date!).toLocaleDateString()} |{" "}
+                      {new Date(meeting.date!).toLocaleTimeString()}
                     </div>
                   </div>
                   <div className="flex mt-4 gap-4">
-                    <button className="w-full px-6 py-4 bg-white border cursor-pointer h-min transition-colors duration-300 hover:bg-neutral-900 hover:text-white text-neutral-900">
+                    <Link to={`/meetings/${meeting._id}`} className="w-full px-6 py-4 bg-white border cursor-pointer h-min transition-colors duration-300 hover:bg-neutral-900 hover:text-white text-neutral-900">
                       View Details
-                    </button>
+                    </Link>
                   </div>
                 </div>
-              ))}
+              ))
+          ) : (
+            <div>No upcoming meetings found</div>
+          )}
         </div>
       </div>
       <div className="flex flex-col gap-4">
         <h2 className="text-3xl font-bold">Previous Meetings</h2>
-        <div className="grid grid-flow-col gap-4">
+        <div className="overflow-x-auto grid grid-flow-col gap-4">
           {!isLoading &&
-            !error &&
-            data &&
+          !error &&
+          data &&
+          data.filter(
+            (meeting: Meeting) =>
+              meeting.date && new Date(meeting.date) < new Date(),
+          ).length > 0 ? (
             data
               .filter(
                 (meeting: Meeting) =>
@@ -83,17 +96,20 @@ const MeetAssistHome = () => {
                       {meeting.description}
                     </div>
                     <div>
-                      {meeting.date?.toLocaleDateString()} |{" "}
-                      {meeting.date?.toLocaleTimeString()}
+                      {new Date(meeting.date!).toLocaleDateString()} |{" "}
+                      {new Date(meeting.date!).toLocaleTimeString()}
                     </div>
                   </div>
                   <div className="flex mt-4 gap-4">
-                    <button className="w-full px-6 py-4 bg-white border cursor-pointer h-min transition-colors duration-300 hover:bg-neutral-900 hover:text-white text-neutral-900">
+                    <Link to={`/meetings/${meeting._id}`} className="w-full px-6 py-4 bg-white border cursor-pointer h-min transition-colors duration-300 hover:bg-neutral-900 hover:text-white text-neutral-900">
                       View Details
-                    </button>
+                    </Link>
                   </div>
                 </div>
-              ))}
+              ))
+          ) : (
+            <div>No previous meetings found</div>
+          )}
         </div>
       </div>
     </div>

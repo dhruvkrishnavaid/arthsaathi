@@ -20,7 +20,7 @@ export interface User {
 }
 
 export interface Meeting {
-  id?: string | number;
+  _id?: string | number;
   email: string;
   description: string;
   participants?: string[];

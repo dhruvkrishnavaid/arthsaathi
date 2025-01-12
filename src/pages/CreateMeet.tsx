@@ -7,11 +7,11 @@ import { useUserStore } from "../utils/user";
 const CreateMeet = () => {
   const store = useUserStore();
   const [meet, setMeet] = useState<Meeting>({
-    description: "",
-    date: new Date(),
-    content: "",
-    participants: [],
     email: store.user?.email || "",
+    participants: [],
+    description: "",
+    content: "",
+    date: new Date(),
     notes: "",
   });
   const navigate = useNavigate();
@@ -30,15 +30,6 @@ const CreateMeet = () => {
     });
   };
 
-  const handleSubmit = async () => {
-    try {
-      const res = await postUrl(meet, "/createMeeting");
-      navigate(`/meetings/${res.id}`);
-    } catch (error) {
-      alert(`Failed to create meet ${error}`);
-    }
-  };
-
   function handleParticipantsChange(
     e: React.ChangeEvent<HTMLInputElement>,
   ): void {
@@ -54,6 +45,21 @@ const CreateMeet = () => {
       notes: e.target.value,
     });
   }
+
+  const handleSubmit = async () => {
+    try {
+    const res = await postUrl(meet, "/createMeeting");
+    console.log(res);
+    navigate(`/meetings/${res.id}`);
+    } catch (error: unknown) {
+      if (error instanceof Error) {
+        alert("Failed to create meeting!");
+        console.error(error);
+      } else {
+        alert("Failed to create meet!");
+      }
+    }
+  };
 
   function handelCancel(): void {
     navigate("/meetings");
@@ -99,7 +105,7 @@ const CreateMeet = () => {
           <label>Date</label>
           <input
             type="date"
-            value={meet.date?.toISOString().split("T")[0]}
+            value={new Date(meet.date!).toISOString().split("T")[0]}
             className="w-full outline-0 flex px-2 py-3 border"
             onChange={(e) => handleDateChange(new Date(e.target.value))}
           />
