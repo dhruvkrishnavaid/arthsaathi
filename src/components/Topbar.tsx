@@ -22,7 +22,11 @@ const Topbar = () => {
         <IconBell />
         <button className="flex items-center w-full h-16 p-2 text-left gap-4">
           <IconUser className="w-12 h-12 p-2 border rounded-full min-w-12 min-h-12" />
-          <div>{user?.name}</div>
+          <div>
+            {user?.name && user?.name?.length > 18
+              ? user?.name?.slice(0, 18) + "..."
+              : user?.name}
+          </div>
           <IconChevronDown />
         </button>
       </div>

@@ -42,7 +42,7 @@ const Sidebar = () => {
       <ul>
         <li className="w-full h-12">
           <Link
-            to="/Home"
+            to="/home"
             className="flex items-center w-full h-full p-2 text-left cursor-pointer transition-colors duration-300 gap-4 hover:bg-neutral-200"
           >
             <IconHome />
@@ -170,7 +170,7 @@ const Sidebar = () => {
             <div>
               <div>
                 {user?.name && user?.name?.length > 18
-                  ? user?.name?.slice(0, 18)
+                  ? user?.name?.slice(0, 18)+"..."
                   : user?.name}
               </div>
               <div className="text-neutral-500/90">

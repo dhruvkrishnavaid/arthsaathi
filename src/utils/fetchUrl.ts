@@ -1,8 +1,11 @@
 import axios from "axios";
 
-export const postUrl = async (user: unknown, url: string) => {
-  const res = await axios.post(import.meta.env.VITE_BASEURL + url, {
-    body: user,
+export const postUrl = async (payload: unknown, url: string) => {
+  console.log(payload);
+  const res = await axios({
+    method: "POST",
+    url: import.meta.env.VITE_BASEURL + url,
+    data: payload,
   });
   return res.data;
 };

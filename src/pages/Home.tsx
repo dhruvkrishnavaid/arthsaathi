@@ -3,7 +3,7 @@ import BusinessCard from '../components/BusinessCard';
 
 function Home() {
   return (
-    <div className='p-2 overflow-x-hidden'> 
+    <div className='pt-2 pl-2'>
     <div className='flex'>
     <div className='w-[20%]'>
     <div className="text-xl font-semibold">
@@ -16,7 +16,7 @@ function Home() {
       <img src={HomeGuy} alt="HomeGuy" className='w-[300px] ml-[500px] scale-152'/>
     </div>
 
-    <div className='text-xl font-semibold mt-5'>
+    <div className='mt-5 text-xl font-semibold'>
     Explore Businesses
     </div>
     <div className='flex'>
